@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行程定制 | 贵州旅游·醉美黔行</title>
+<meta name="description" content="贵州旅游行程定制咨询 - 填写表单，获取专属贵州旅行方案">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{'qian-green':'#2d6a4f','qian-green-light':'#40916c','qian-blue':'#1b4965','qian-blue-light':'#0077b6','qian-red':'#c1121f','qian-red-light':'#e63946','qian-gold':'#d4a373'},fontFamily:{'sans':['"Noto Sans SC"','system-ui','sans-serif']}}}}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans SC',system-ui,sans-serif;
+  min-height:100vh;
+  background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 30%, #fce4ec 70%, #f0f7f0 100%);
+  background-attachment: fixed;
+}
+.glass{
+  background:rgba(255,255,255,0.18);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.25);
+  box-shadow:0 8px 32px rgba(0,0,0,0.08);
+}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:#f0f7f0;}
+::-webkit-scrollbar-thumb{background:linear-gradient(135deg,#40916c,#0077b6);border-radius:4px;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes floatBg{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-20px);}}
+@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
+.animate-fade-up{animation:fadeInUp 0.8s ease-out both;}
+.animate-float{animation:floatBg 8s ease-in-out infinite;}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:12px 16px;border:2px solid rgba(64,145,108,0.15);
+  border-radius:12px;font-size:0.95rem;outline:none;
+  transition:all 0.3s ease;background:rgba(255,255,255,0.85);
+  font-family:inherit;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  border-color:#40916c;box-shadow:0 0 0 4px rgba(64,145,108,0.1);
+}
+.form-input:hover,.form-select:hover,.form-textarea:hover{
+  border-color:rgba(64,145,108,0.4);
+}
+.form-label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;color:#1b4965;}
+.submit-btn{
+  background:linear-gradient(135deg,#40916c,#0077b6);
+  color:#fff;border:none;padding:14px 40px;border-radius:50px;
+  font-size:1rem;font-weight:700;cursor:pointer;
+  transition:all 0.4s ease;box-shadow:0 8px 25px rgba(64,145,108,0.3);
+  font-family:inherit;
+}
+.submit-btn:hover{
+  transform:translateY(-3px);box-shadow:0 12px 35px rgba(64,145,108,0.4);
+}
+.submit-btn:active{transform:translateY(0);}
+.gradient-text{
+  background:linear-gradient(135deg,#2d6a4f,#0077b6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-glass{
+  background:rgba(240,247,240,0.85);backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(64,145,108,0.15);
+}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .form-grid{grid-template-columns:1fr!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <i class="fas fa-mountain text-2xl" style="color:#40916c;"></i>
+        <span class="text-xl font-bold" style="color:#1b4965;">黔·<span style="color:#40916c;">行</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium transition hover:text-qian-green-light" style="color:#1b4965;"><i class="fas fa-home mr-1"></i>返回首页</a>
+        <a href="index.html#scenic" class="text-sm font-medium transition hover:text-qian-green-light" style="color:#1b4965;">景点</a>
+        <a href="index.html#food" class="text-sm font-medium transition hover:text-qian-green-light" style="color:#1b4965;">美食</a>
+        <a href="index.html#routes" class="text-sm font-medium transition hover:text-qian-green-light" style="color:#1b4965;">路线</a>
+      </div>
+      <a href="index.html" class="md:hidden text-qian-green-light"><i class="fas fa-arrow-left text-lg"></i></a>
+    </div>
+  </div>
+</nav>
+
+<!-- 装饰背景圆 -->
+<div class="fixed top-20 left-10 w-72 h-72 rounded-full bg-qian-green-light/10 blur-3xl animate-float" style="z-index:0;"></div>
+<div class="fixed bottom-20 right-10 w-96 h-96 rounded-full bg-qian-blue-light/10 blur-3xl animate-float" style="z-index:0;animation-delay:2s;"></div>
+<div class="fixed top-1/3 right-1/4 w-48 h-48 rounded-full bg-qian-red/5 blur-3xl animate-float" style="z-index:0;animation-delay:4s;"></div>
+
+<!-- 主内容 -->
+<div class="relative z-10 pt-24 pb-16 px-4">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- 标题 -->
+    <div class="text-center mb-10 reveal" style="animation-delay:0.1s;">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/40 backdrop-blur-sm text-sm font-medium mb-4" style="color:#2d6a4f;">
+        <i class="fas fa-map-marked-alt"></i> 一对一行程规划
+      </div>
+      <h1 class="text-4xl md:text-5xl font-black gradient-text mb-3">定制你的贵州之旅</h1>
+      <p class="text-gray-500 max-w-lg mx-auto">填写下方信息，我们将为你量身打造专属贵州旅行方案</p>
+    </div>
+
+    <!-- 表单卡片 -->
+    <div class="glass rounded-3xl p-6 md:p-10 reveal" style="animation-delay:0.2s;">
+      <form onsubmit="return handleSubmit(event)">
+
+        <!-- 两列布局 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 form-grid">
+
+          <!-- 姓名 -->
+          <div>
+            <label class="form-label"><i class="fas fa-user text-qian-green-light mr-1"></i> 姓名 <span style="color:#c1121f;">*</span></label>
+            <input type="text" class="form-input" placeholder="请输入您的姓名" required>
+          </div>
+
+          <!-- 联系方式 -->
+          <div>
+            <label class="form-label"><i class="fas fa-phone text-qian-green-light mr-1"></i> 联系方式 <span style="color:#c1121f;">*</span></label>
+            <input type="tel" class="form-input" placeholder="手机号 / 微信号" required>
+          </div>
+
+          <!-- 出行日期 -->
+          <div>
+            <label class="form-label"><i class="fas fa-calendar text-qian-green-light mr-1"></i> 计划出行日期</label>
+            <input type="date" class="form-input">
+          </div>
+
+          <!-- 出行天数 -->
+          <div>
+            <label class="form-label"><i class="fas fa-clock text-qian-green-light mr-1"></i> 计划游玩天数</label>
+            <select class="form-select">
+              <option value="">请选择天数</option>
+              <option>1-2天</option>
+              <option>3-4天</option>
+              <option>5-7天</option>
+              <option>7天以上</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 目的地（多选 - 复选框） -->
+        <div class="mt-5">
+          <label class="form-label"><i class="fas fa-mountain text-qian-green-light mr-1"></i> 感兴趣的目的地 <span style="color:#c1121f;">*</span></label>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="黄果树" class="accent-qian-green w-4 h-4" checked>
+              <span class="text-sm">🌊 黄果树瀑布</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="千户苗寨" class="accent-qian-green w-4 h-4" checked>
+              <span class="text-sm">🏘️ 千户苗寨</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="梵净山" class="accent-qian-green w-4 h-4">
+              <span class="text-sm">⛰️ 梵净山</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="荔波" class="accent-qian-green w-4 h-4">
+              <span class="text-sm">💎 荔波小七孔</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="镇远" class="accent-qian-green w-4 h-4">
+              <span class="text-sm">🏛️ 镇远古镇</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="万峰林" class="accent-qian-green w-4 h-4">
+              <span class="text-sm">🌄 万峰林</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="肇兴侗寨" class="accent-qian-green w-4 h-4">
+              <span class="text-sm">🏯 肇兴侗寨</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="checkbox" name="dest" value="织金洞" class="accent-qian-green w-4 h-4">
+              <span class="text-sm">🕳️ 织金洞</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 出行人数（单选） -->
+        <div class="mt-5">
+          <label class="form-label"><i class="fas fa-users text-qian-green-light mr-1"></i> 出行人数</label>
+          <div class="flex flex-wrap gap-3 mt-2">
+            <label class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="radio" name="people" value="1-2" class="accent-qian-green" checked>
+              <span class="text-sm">1-2人（自由行）</span>
+            </label>
+            <label class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="radio" name="people" value="3-5" class="accent-qian-green">
+              <span class="text-sm">3-5人（家庭/好友）</span>
+            </label>
+            <label class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/50 hover:bg-white/80 cursor-pointer transition border border-qian-green/10 has-[:checked]:border-qian-green has-[:checked]:bg-qian-green/5">
+              <input type="radio" name="people" value="6+" class="accent-qian-green">
+              <span class="text-sm">6人以上（团体）</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 特殊需求（文本域） -->
+        <div class="mt-5">
+          <label class="form-label"><i class="fas fa-comment-dots text-qian-green-light mr-1"></i> 特殊需求与备注</label>
+          <textarea class="form-textarea" rows="4" placeholder="例如：是否有老人/小孩、饮食禁忌、偏好的活动类型（徒步/摄影/美食体验）……"></textarea>
+        </div>
+
+        <!-- 提交与返回 -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mt-8 pt-6 border-t border-white/30">
+          <p class="text-xs text-gray-400"><span style="color:#c1121f;">*</span> 为必填项</p>
+          <div class="flex gap-3">
+            <a href="index.html" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-gray-300 text-gray-500 hover:bg-white/50 transition text-sm font-medium">
+              <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+            <button type="submit" class="submit-btn inline-flex items-center gap-2 text-sm">
+              <i class="fas fa-paper-plane"></i> 提交咨询
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- 出游须知（无序列表） -->
+    <div class="glass rounded-3xl p-6 md:p-8 mt-8 reveal" style="animation-delay:0.3s;">
+      <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:#1b4965;">
+        <i class="fas fa-info-circle text-qian-gold"></i> 出游须知
+      </h3>
+      <ul class="space-y-2.5 text-sm" style="color:#4a5568;">
+        <li class="flex items-start gap-3">
+          <span class="w-5 h-5 rounded-full bg-qian-green/10 flex items-center justify-center text-qian-green text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+          <span><strong>最佳季节：</strong>贵州四季皆宜，春季（3-5月）赏花、夏季（6-8月）避暑、秋季（9-11月）观景、冬季（12-2月）泡温泉，各具特色。</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="w-5 h-5 rounded-full bg-qian-green/10 flex items-center justify-center text-qian-green text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+          <span><strong>交通建议：</strong>贵州已实现"县县通高速"，贵阳为西南高铁枢纽，推荐高铁+租车自驾的出行方式。</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="w-5 h-5 rounded-full bg-qian-green/10 flex items-center justify-center text-qian-green text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+          <span><strong>衣物准备：</strong>贵州多雨多雾，夏季平均气温22-26℃，建议携带薄外套、雨具和防滑鞋。</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="w-5 h-5 rounded-full bg-qian-green/10 flex items-center justify-center text-qian-green text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+          <span><strong>美食推荐：</strong>酸汤鱼、丝娃娃、肠旺面、糯米饭、烙锅——贵州美食以酸辣鲜香著称，不可错过。</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="w-5 h-5 rounded-full bg-qian-green/10 flex items-center justify-center text-qian-green text-xs font-bold flex-shrink-0 mt-0.5">5</span>
+          <span><strong>民族礼仪：</strong>尊重当地少数民族风俗，拍摄人物前请征得同意，进入村寨时注意言行礼节。</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 返回首页 -->
+    <div class="text-center mt-8 reveal" style="animation-delay:0.4s;">
+      <a href="index.html" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-qian-green-light transition">
+        <i class="fas fa-arrow-left"></i> 返回首页 · 醉美黔行
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="relative z-10 py-10 text-center" style="background:rgba(13,27,42,0.95);">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-center gap-4 mb-6">
+      <a href="index.html" class="text-gray-400 hover:text-qian-green-light transition text-sm">首页</a>
+      <span class="text-gray-600">|</span>
+      <a href="index.html#scenic" class="text-gray-400 hover:text-qian-green-light transition text-sm">景点</a>
+      <span class="text-gray-600">|</span>
+      <a href="index.html#food" class="text-gray-400 hover:text-qian-green-light transition text-sm">美食</a>
+      <span class="text-gray-600">|</span>
+      <a href="index.html#culture" class="text-gray-400 hover:text-qian-green-light transition text-sm">文化</a>
+    </div>
+    <p class="text-gray-500 text-xs">&copy; 2026 贵州旅游推介官网 · 醉美黔行 | 行程定制咨询</p>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+// 滚动揭示动画
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// 表单提交
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.submit-btn');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fas fa-check-circle"></i> 提交成功！我们会尽快联系您';
+    btn.style.background = 'linear-gradient(135deg, #2d6a4f, #40916c)';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.disabled = false;
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }, 1500);
+  return false;
+}
+</script>
+</body>
+</html>

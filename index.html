@@ -1,0 +1,923 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州·山水秘境 | 探索多彩贵州旅游官网</title>
+<meta name="description" content="贵州旅游官方推介网站 - 黄果树瀑布、千户苗寨、梵净山、荔波小七孔等十大景点，品味酸汤鱼等特色美食，感受苗族侗族布依族民族文化。">
+<meta name="keywords" content="贵州旅游,黄果树瀑布,千户苗寨,梵净山,荔波小七孔,酸汤鱼,贵州美食,苗族文化">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.example.com/guizhou-travel">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'qian-green': '#2d6a4f',
+        'qian-green-light': '#40916c',
+        'qian-blue': '#1b4965',
+        'qian-blue-light': '#0077b6',
+        'qian-red': '#c1121f',
+        'qian-red-light': '#e63946',
+        'qian-gold': '#d4a373',
+        'qian-cream': '#fefae0',
+      },
+      fontFamily: {
+        'sans': ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', system-ui, sans-serif;
+  background: #f0f7f0;
+  color: #1a1a2e;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f0f7f0; }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #40916c, #0077b6); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #2d6a4f, #1b4965); }
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes floatCloud {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes elasticPop {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.08); }
+  70% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(64, 145, 108, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(64, 145, 108, 0.6); }
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes counterPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.animate-fade-up { animation: fadeInUp 0.8s ease-out both; }
+.animate-elastic { animation: elasticPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both; }
+.animate-float { animation: floatCloud 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+.img-fade-in {
+  opacity: 0; transition: opacity 0.8s ease, transform 0.6s ease;
+}
+.img-fade-in.loaded { opacity: 1; }
+.banner-parallax { position: relative; overflow: hidden; height: 100vh; }
+.banner-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  background-attachment: fixed;
+  opacity: 0; transition: opacity 1.5s ease, transform 0.3s ease;
+  will-change: transform;
+}
+.banner-slide.active { opacity: 1; }
+.banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(27,73,101,0.5), rgba(45,106,79,0.4), rgba(193,18,31,0.15));
+  z-index: 1;
+}
+.banner-cloud {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f0f7f0' fill-opacity='0.8' d='M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,138.7C672,128,768,128,864,144C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'/%3E%3C/svg%3E") no-repeat bottom / cover;
+  z-index: 2; animation: floatCloud 8s ease-in-out infinite;
+}
+.nav-glass {
+  background: rgba(240, 247, 240, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(64, 145, 108, 0.15);
+  transition: all 0.4s ease;
+}
+.nav-scrolled {
+  background: rgba(240, 247, 240, 0.92);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+.nav-link { position: relative; transition: color 0.3s ease; }
+.nav-link::after {
+  content: ''; position: absolute; bottom: -2px; left: 50%;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, #40916c, #0077b6);
+  transition: all 0.3s ease; transform: translateX(-50%);
+  border-radius: 2px;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.dropdown { position: relative; display: inline-block; }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(8px);
+  min-width: 160px; background: rgba(240,247,240,0.98); backdrop-filter: blur(20px);
+  border-radius: 16px; padding: 8px; opacity: 0; pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.15); border: 1px solid rgba(64,145,108,0.12);
+  z-index: 200;
+}
+.dropdown:hover .dropdown-menu, .dropdown-menu.dropdown-open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.dropdown-link {
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease;
+  color: #1b4965; white-space: nowrap;
+}
+.dropdown-link:hover { background: rgba(64,145,108,0.1); color: #40916c; transform: translateX(4px); }
+.scenic-card {
+  position: relative; border-radius: 20px; overflow: hidden; cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: #fff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+.scenic-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px rgba(64, 145, 108, 0.25), 0 0 40px rgba(0, 119, 182, 0.1);
+}
+.scenic-card img { transition: transform 0.6s ease; height: 220px; width: 100%; object-fit: cover; }
+.scenic-card:hover img { transform: scale(1.1); }
+.scenic-card-body { padding: 1.25rem; background: linear-gradient(180deg, #fff, #f8fff8); }
+.scenic-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: linear-gradient(135deg, #c1121f, #e63946); color: #fff;
+  padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+  box-shadow: 0 4px 15px rgba(193, 18, 31, 0.3); z-index: 2;
+}
+.scenic-tag {
+  display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem;
+  background: rgba(64, 145, 108, 0.12); color: #2d6a4f; margin-right: 4px; margin-bottom: 4px;
+}
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px);
+  z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal-content {
+  background: #fff; border-radius: 24px; max-width: 700px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  animation: elasticPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.modal-content img { width: 100%; height: 320px; object-fit: cover; border-radius: 24px 24px 0 0; }
+.modal-body { padding: 2rem; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.9); border: none; font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; z-index: 10;
+}
+.modal-close:hover { background: #c1121f; color: #fff; transform: rotate(90deg); }
+.food-card {
+  border-radius: 20px; overflow: hidden; background: #fff;
+  transition: all 0.4s ease; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+.food-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 16px 48px rgba(193, 18, 31, 0.15); }
+.food-card img { height: 200px; width: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.food-card:hover img { transform: scale(1.08); }
+.review-carousel { position: relative; overflow: hidden; }
+.review-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.review-slide { min-width: 100%; padding: 0 20px; }
+.review-card {
+  background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 24px;
+  padding: 2.5rem 2rem; text-align: center; max-width: 650px; margin: 0 auto;
+}
+.review-stars { color: #f0a500; font-size: 1.3rem; letter-spacing: 4px; }
+.review-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6); cursor: pointer;
+  transition: all 0.3s ease; margin: 0 6px;
+}
+.review-dot.active { background: #fff; border-color: #fff; box-shadow: 0 0 12px rgba(255,255,255,0.5); transform: scale(1.2); }
+.stat-number {
+  font-size: 3rem; font-weight: 900;
+  background: linear-gradient(135deg, #40916c, #0077b6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.2;
+}
+.hamburger { cursor: pointer; }
+.hamburger span {
+  display: block; width: 26px; height: 2.5px; margin: 5px 0;
+  background: #1b4965; border-radius: 4px; transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-menu {
+  position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+  background: rgba(240, 247, 240, 0.97); backdrop-filter: blur(20px);
+  padding: 80px 2rem 2rem; transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 40; box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+}
+.mobile-menu.open { right: 0; }
+.back-to-top {
+  position: fixed; bottom: 30px; right: 30px;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: linear-gradient(135deg, #40916c, #0077b6); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(64, 145, 108, 0.4);
+  transition: all 0.4s ease; z-index: 50;
+  opacity: 0; transform: translateY(20px); pointer-events: none;
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: 0 8px 30px rgba(64, 145, 108, 0.5); }
+.route-card {
+  background: #fff; border-radius: 20px; padding: 2rem;
+  border-left: 4px solid #40916c; transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.route-card:hover { border-left-color: #0077b6; transform: translateX(8px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+.route-day {
+  display: inline-block; background: linear-gradient(135deg, #40916c, #0077b6); color: #fff;
+  padding: 4px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+}
+.culture-card { position: relative; border-radius: 20px; overflow: hidden; height: 380px; cursor: pointer; }
+.culture-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.culture-card:hover img { transform: scale(1.1); }
+.culture-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 50%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2rem; color: #fff; transition: all 0.4s ease;
+}
+.culture-card:hover .culture-overlay { background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%); }
+.video-section {
+  border-radius: 20px; overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.video-section video {
+  width: 100%; display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.video-caption {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.3), transparent);
+}
+.play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px; height: 72px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 2rem;
+  cursor: pointer; transition: all 0.4s ease;
+  pointer-events: none;
+}
+.video-wrapper:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: rgba(193,18,31,0.6);
+  border-color: #c1121f;
+}
+.section-divider {
+  height: 6px;
+  background: linear-gradient(90deg, #40916c, #0077b6, #c1121f, #0077b6, #40916c);
+  background-size: 200% 100%; animation: shimmer 3s linear infinite;
+  border: none; margin: 0;
+}
+@media (max-width: 768px) {
+  .stat-number { font-size: 2.2rem; }
+  .modal-content img { height: 200px; }
+  .banner-title { font-size: 2.5rem !important; }
+  .culture-card { height: 280px; }
+  .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 1.1rem; }
+  .review-card { padding: 1.8rem 1.2rem; }
+}
+.gradient-text {
+  background: linear-gradient(135deg, #2d6a4f, #0077b6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.gradient-text-red {
+  background: linear-gradient(135deg, #c1121f, #e63946);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<!-- ===== 固定导航栏 ===== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-glass">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-2 group">
+        <i class="fas fa-mountain text-2xl" style="color:#40916c;"></i>
+        <span class="text-xl font-bold" style="color:#1b4965;">黔·<span style="color:#40916c;">行</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#banner" class="nav-link text-sm font-medium" style="color:#1b4965;">首页</a>
+        <a href="#stats" class="nav-link text-sm font-medium" style="color:#1b4965;">数据</a>
+        <a href="#scenic" class="nav-link text-sm font-medium" style="color:#1b4965;">景点</a>
+        <a href="#food" class="nav-link text-sm font-medium" style="color:#1b4965;">美食</a>
+        <a href="#routes" class="nav-link text-sm font-medium" style="color:#1b4965;">路线</a>
+        <a href="#culture" class="nav-link text-sm font-medium" style="color:#1b4965;">文化</a>
+        <div class="dropdown">
+          <a href="javascript:void(0)" id="dropdownToggle" class="nav-link text-sm font-medium" style="color:#1b4965;">
+            更多 <i class="fas fa-chevron-down text-xs ml-1" style="font-size:0.65rem;"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="apply.html" class="dropdown-link"><i class="fas fa-map-marked-alt text-qian-green-light"></i> 行程定制</a>
+            <div style="height:1px;background:rgba(64,145,108,0.1);margin:4px 12px;"></div>
+            <a href="#reviews" class="dropdown-link"><i class="fas fa-star text-qian-gold"></i> 游客评价</a>
+          </div>
+        </div>
+      </div>
+      <div class="md:hidden hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="flex flex-col gap-6 text-lg">
+    <a href="#banner" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-home w-8"></i> 首页</a>
+    <a href="#stats" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-chart-line w-8"></i> 数据</a>
+    <a href="#scenic" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-mountain w-8"></i> 景点</a>
+    <a href="#food" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-utensils w-8"></i> 美食</a>
+    <a href="#routes" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-route w-8"></i> 路线</a>
+    <a href="#culture" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-dragon w-8"></i> 文化</a>
+    <a href="apply.html" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-map-marked-alt w-8"></i> 行程定制</a>
+    <a href="#reviews" onclick="closeMenu()" class="font-medium hover:text-qian-green-light transition" style="color:#1b4965;"><i class="fas fa-star w-8"></i> 评价</a>
+  </div>
+</div>
+
+<!-- ===== Banner 轮播 ===== -->
+<section id="banner" class="banner-parallax relative">
+  <div class="banner-slide active" style="background-image:url('./images/banner/banner1.jpg');" data-index="0"></div>
+  <div class="banner-slide" style="background-image:url('./images/banner/banner2.jpg');" data-index="1"></div>
+  <div class="banner-slide" style="background-image:url('./images/banner/banner3.jpg');" data-index="2"></div>
+  <div class="banner-slide" style="background-image:url('./images/banner/banner4.jpg');" data-index="3"></div>
+  <div class="banner-overlay"></div>
+  <div class="banner-cloud"></div>
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
+    <div class="animate-fade-up" style="animation-delay: 0.3s;">
+      <p class="tracking-[0.3em] text-sm md:text-base mb-4 font-medium" style="color:#d4a373;text-shadow:0 2px 10px rgba(0,0,0,0.3);">
+        <i class="fas fa-leaf mr-2"></i>多彩贵州 · 山地公园省
+      </p>
+      <h1 class="banner-title text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight" style="text-shadow:0 4px 30px rgba(0,0,0,0.5);">醉美·黔行</h1>
+      <p class="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light" style="text-shadow:0 2px 10px rgba(0,0,0,0.4);">黄果树下听瀑声 · 苗寨灯火映星河 · 梵净山巅观云海</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#scenic" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white/20 backdrop-blur-sm text-white font-medium border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm"><i class="fas fa-compass"></i> 探索景点</a>
+        <a href="#food" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-medium border border-white/40 hover:bg-white/20 transition-all duration-300 text-sm backdrop-blur-sm"><i class="fas fa-utensils"></i> 品味贵州</a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-32 left-0 right-0 z-10 flex justify-center gap-3">
+    <button class="w-10 h-1 rounded-full bg-white/60 transition-all duration-500 hover:bg-white carousel-dot active" data-slide="0"></button>
+    <button class="w-10 h-1 rounded-full bg-white/30 transition-all duration-500 hover:bg-white/60 carousel-dot" data-slide="1"></button>
+    <button class="w-10 h-1 rounded-full bg-white/30 transition-all duration-500 hover:bg-white/60 carousel-dot" data-slide="2"></button>
+    <button class="w-10 h-1 rounded-full bg-white/30 transition-all duration-500 hover:bg-white/60 carousel-dot" data-slide="3"></button>
+  </div>
+  <button class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-3xl md:text-4xl transition-all duration-300 hover:scale-110 carousel-prev" aria-label="上一张"><i class="fas fa-chevron-circle-left"></i></button>
+  <button class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-3xl md:text-4xl transition-all duration-300 hover:scale-110 carousel-next" aria-label="下一张"><i class="fas fa-chevron-circle-right"></i></button>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/60 animate-bounce"><i class="fas fa-chevron-down text-xl"></i></div>
+</section>
+<!-- ===== 数字统计 ===== -->
+<section id="stats" class="py-20 md:py-28 relative overflow-hidden" style="background:linear-gradient(135deg,#e8f5e9 0%,#e3f2fd 50%,#fce4ec 100%);">
+  <div class="absolute top-10 left-10 w-32 h-32 rounded-full bg-qian-green-light/10 blur-3xl"></div>
+  <div class="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-qian-blue-light/10 blur-3xl"></div>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black gradient-text mb-4"><i class="fas fa-chart-line text-qian-green-light mr-2"></i> 贵州·数据</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">用数字感受多彩贵州的魅力</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="glass rounded-2xl p-6 md:p-8 text-center reveal" style="animation-delay:0.1s;">
+        <i class="fas fa-mountain text-3xl mb-4" style="color:#40916c;"></i>
+        <div class="stat-number" data-target="120">0</div>
+        <p class="text-gray-600 mt-2 text-sm font-medium">A级景区（个）</p>
+      </div>
+      <div class="glass rounded-2xl p-6 md:p-8 text-center reveal" style="animation-delay:0.2s;">
+        <i class="fas fa-water text-3xl mb-4" style="color:#0077b6;"></i>
+        <div class="stat-number" data-target="4800">0</div>
+        <p class="text-gray-600 mt-2 text-sm font-medium">河流（条）</p>
+      </div>
+      <div class="glass rounded-2xl p-6 md:p-8 text-center reveal" style="animation-delay:0.3s;">
+        <i class="fas fa-users text-3xl mb-4" style="color:#c1121f;"></i>
+        <div class="stat-number" data-target="49">0</div>
+        <p class="text-gray-600 mt-2 text-sm font-medium">少数民族（个）</p>
+      </div>
+      <div class="glass rounded-2xl p-6 md:p-8 text-center reveal" style="animation-delay:0.4s;">
+        <i class="fas fa-tree text-3xl mb-4" style="color:#2d6a4f;"></i>
+        <div class="stat-number" data-target="63">0</div>
+        <p class="text-gray-600 mt-2 text-sm font-medium">森林覆盖率（%）</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- ===== 十大景点 ===== -->
+<section id="scenic" class="py-20 md:py-28" style="background:#f0f7f0;">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black gradient-text mb-4"><i class="fas fa-map-marked-alt text-qian-red-light mr-2"></i> 十大必游景点</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">点击卡片查看详细攻略</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="scenicGrid"></div>
+  </div>
+  <div class="modal-overlay" id="scenicModal">
+    <div class="relative modal-content" style="max-width:700px;">
+      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- ===== 特色美食 ===== -->
+<section id="food" class="py-20 md:py-28 relative" style="background:linear-gradient(135deg,#fdf2e9 0%,#fff8f0 100%);">
+  <div class="absolute top-0 right-0 w-64 h-64 bg-qian-red/5 rounded-full blur-3xl"></div>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black gradient-text-red mb-4"><i class="fas fa-utensils mr-2"></i> 黔味·舌尖上的贵州</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">酸辣鲜香，一口难忘的贵州味道</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="foodGrid"></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+<!-- ===== 旅游路线 ===== -->
+<section id="routes" class="py-20 md:py-28" style="background:#f0f7f0;">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black gradient-text mb-4"><i class="fas fa-route text-qian-blue-light mr-2"></i> 精品路线推荐</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">精选行程，带你玩转贵州</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="route-card reveal" style="animation-delay:0.1s;">
+        <div class="route-day mb-3">3日经典游</div>
+        <h4 class="text-xl font-bold mb-3" style="color:#1b4965;"><i class="fas fa-sun text-qian-gold mr-2"></i>黔中精华线</h4>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D1：</strong>贵阳 → 黄果树瀑布 → 天星桥</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D2：</strong>荔波小七孔 → 大七孔</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D3：</strong>西江千户苗寨 → 返程</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-qian-green-light text-sm"><i class="fas fa-clock"></i> 最佳季节：3-10月</div>
+      </div>
+      <div class="route-card reveal" style="animation-delay:0.2s;">
+        <div class="route-day mb-3">5日深度游</div>
+        <h4 class="text-xl font-bold mb-3" style="color:#1b4965;"><i class="fas fa-cloud text-qian-blue-light mr-2"></i>黔东山水线</h4>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D1：</strong>铜仁 → 梵净山（宿山上）</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D2：</strong>梵净山 → 镇远古镇</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D3：</strong>镇远 → 肇兴侗寨</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D4：</strong>岜沙苗寨 → 加榜梯田</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D5：</strong>从江 → 返程</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-qian-blue-light text-sm"><i class="fas fa-clock"></i> 最佳季节：5-11月</div>
+      </div>
+      <div class="route-card reveal" style="animation-delay:0.3s;">
+        <div class="route-day mb-3">7日全景游</div>
+        <h4 class="text-xl font-bold mb-3" style="color:#1b4965;"><i class="fas fa-globe-asia text-qian-red-light mr-2"></i>环黔全境线</h4>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D1：</strong>贵阳 → 青岩古镇 → 甲秀楼</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D2：</strong>黄果树 → 马岭河峡谷</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D3：</strong>万峰林 → 荔波</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D4：</strong>大小七孔 → 千户苗寨</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D5：</strong>镇远 → 梵净山</li>
+          <li><i class="fas fa-check-circle text-qian-green-light mr-2"></i><strong>D6-7：</strong>织金洞 → 遵义 → 返程</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-qian-red-light text-sm"><i class="fas fa-clock"></i> 最佳季节：全年皆宜</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- ===== 民族文化 ===== -->
+<section id="culture" class="py-20 md:py-28 relative overflow-hidden" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);">
+  <div class="absolute inset-0 opacity-10" style="background:url('./images/banner/banner1.jpg') center/cover fixed;"></div>
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4"><i class="fas fa-dragon text-qian-gold mr-2"></i> 多彩民族·文化瑰宝</h2>
+      <p class="text-gray-400 max-w-xl mx-auto">贵州17个世居少数民族，孕育了璀璨的非物质文化遗产</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="cultureGrid"></div>
+
+    <!-- 贵州文化宣传视频 -->
+    <div class="mt-10 video-section reveal">
+      <div class="video-wrapper relative">
+        <video id="cultureVideo" controls playsinline preload="metadata"
+          poster="./images/banner/banner1.jpg"
+          class="rounded-t-[20px]">
+          <source src="./images/video/guizhou.mp4" type="video/mp4">
+          您的浏览器不支持视频播放，请升级浏览器或使用其他设备访问。
+        </video>
+        <div class="play-btn" id="videoPlayBtn">
+          <i class="fas fa-play" style="margin-left:4px;"></i>
+        </div>
+      </div>
+      <div class="video-caption">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-qian-red/30 flex items-center justify-center text-qian-red-light">
+            <i class="fas fa-video"></i>
+          </div>
+          <div>
+            <h4 class="text-white font-bold text-lg">多彩贵州·人文映像</h4>
+            <p class="text-white/60 text-sm">跟随镜头，走进贵州的山水与人文</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+<!-- ===== 游客评价轮播 ===== -->
+<section id="reviews" class="py-20 md:py-28 relative" style="background:linear-gradient(135deg,#2d6a4f 0%,#1b4965 100%);">
+  <div class="absolute inset-0 opacity-10" style="background:url('./images/banner/banner1.jpg') center/cover fixed;"></div>
+  <div class="max-w-4xl mx-auto px-4 relative z-10">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4"><i class="fas fa-star text-qian-gold mr-2"></i> 旅友心声</h2>
+      <p class="text-white/60 max-w-xl mx-auto">来自真实游客的评价</p>
+    </div>
+    <div class="review-carousel" id="reviewCarousel">
+      <div class="review-track" id="reviewTrack"></div>
+    </div>
+    <div class="flex justify-center gap-2 mt-8" id="reviewDots"></div>
+    <button class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-2xl transition z-10 review-prev" aria-label="上一条"><i class="fas fa-chevron-circle-left"></i></button>
+    <button class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-2xl transition z-10 review-next" aria-label="下一条"><i class="fas fa-chevron-circle-right"></i></button>
+  </div>
+</section>
+<!-- ===== 页脚 ===== -->
+<footer class="py-16" style="background:#0d1b2a;">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <i class="fas fa-mountain text-2xl" style="color:#40916c;"></i>
+          <span class="text-xl font-bold text-white">黔·<span style="color:#40916c;">行</span></span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md">贵州旅游推介官网 · 探索多彩贵州的山水秘境、民族风情与舌尖美味。<br>从黄果树瀑布到千户苗寨，从梵净山到荔波小七孔——醉美黔行，等你出发。</p>
+      </div>
+      <div>
+        <h5 class="text-white font-bold mb-4">快速链接</h5>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="#scenic" class="hover:text-qian-green-light transition">热门景点</a></li>
+          <li><a href="#food" class="hover:text-qian-green-light transition">特色美食</a></li>
+          <li><a href="#routes" class="hover:text-qian-green-light transition">旅游路线</a></li>
+          <li><a href="#culture" class="hover:text-qian-green-light transition">民族文化</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-white font-bold mb-4">联系我们</h5>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><i class="fas fa-envelope w-6 text-qian-green-light"></i> info@guizhou.travel</li>
+          <li><i class="fas fa-phone w-6 text-qian-green-light"></i> 0851-1234-5678</li>
+          <li><i class="fas fa-map-marker-alt w-6 text-qian-green-light"></i> 贵州省贵阳市</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex justify-center gap-4 mb-8">
+      <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-qian-green-light hover:text-white transition-all duration-300"><i class="fab fa-weixin"></i></a>
+      <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-qian-blue-light hover:text-white transition-all duration-300"><i class="fab fa-weibo"></i></a>
+      <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-qian-red-light hover:text-white transition-all duration-300"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-qian-gold hover:text-white transition-all duration-300"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
+      <p>&copy; 2026 贵州旅游推介官网 · 醉美黔行 | 本网站仅供展示用途</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 返回顶部 ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部"><i class="fas fa-arrow-up"></i></button>
+<script>
+// ===== 1. 景点数据 =====
+const scenicSpots = [
+  { id:1, name:'梵净山', rank:1, tags:['世界遗产','佛教名山','云海'], desc:'武陵之巅，云海佛光。梵净山是联合国教科文组织世界自然遗产，以红云金顶、蘑菇石、万米睡佛等奇观闻名。登顶可观云海翻涌、日出金顶，是摄影与徒步爱好者的天堂。', img:'./images/attractions/fanjingshan.jpg', loc:'铜仁市江口县', best:'5-11月', tips:'建议乘坐索道上山，穿防滑鞋' },
+  { id:2, name:'黄果树瀑布', rank:2, tags:['世界瀑布','亚洲最大','西游记'], desc:'亚洲最大瀑布，高77.8米、宽101米。水势磅礴、声如雷鸣。景区由陡坡塘、天星桥、大瀑布三部分组成，夏季水量充沛时蔚为壮观。', img:'./images/attractions/huangguoshu.jpg', loc:'安顺市镇宁县', best:'6-10月', tips:'穿雨衣，水雾很大' },
+  { id:3, name:'西江千户苗寨', rank:3, tags:['苗族文化','夜景','吊脚楼'], desc:'世界最大苗族聚居村寨，十余个自然村寨连片而成。白天的苗寨古朴宁静，夜晚万家灯火如星空洒落，被誉为"用美丽回答一切"的地方。', img:'./images/attractions/xijiang.jpg', loc:'黔东南州雷山县', best:'四季皆宜', tips:'夜景最美，建议住一晚' },
+  { id:4, name:'荔波小七孔', rank:4, tags:['世界遗产','喀斯特','水上森林'], desc:'"地球腰带上的绿宝石"。小七孔古桥、拉雅瀑布、68级跌水瀑布、水上森林等景点如诗如画，湖水碧绿清澈，被誉为"超级盆景"。', img:'./images/attractions/libo.jpg', loc:'黔南州荔波县', best:'4-10月', tips:'穿凉鞋，可踩水游玩' },
+  { id:5, name:'镇远古镇', rank:5, tags:['古镇','舞阳河','青龙洞'], desc:'中国最美十大古镇之一，舞阳河以S形穿城而过。古城墙、古巷道、古民居保存完好，青龙洞古建筑群悬空而建，被誉为"山雄水美之地"。', img:'./images/attractions/zhenyuanguzhen.jpg', loc:'黔东南州镇远县', best:'3-11月', tips:'乘船夜游舞阳河很美' },
+  { id:6, name:'万峰林', rank:6, tags:['峰林','田园','骑行'], desc:'中国最美五大峰林之一，徐霞客赞叹"天下山峰何其多，唯有此处峰成林"。八卦田、纳灰村点缀其间，春季油菜花盛开时节美不胜收。', img:'./images/attractions/wanfenglin.jpeg', loc:'黔西南州兴义市', best:'2-4月,8-10月', tips:'骑自行车游览最佳' },
+  { id:7, name:'肇兴侗寨', rank:7, tags:['侗族文化','鼓楼','风雨桥'], desc:'"侗乡第一寨"，被《国家地理》评为"时光边缘的村落"。五大鼓楼、风雨桥、侗族大歌闻名世界，是体验侗族文化的绝佳之地。', img:'./images/attractions/zhaoxing.jpg', loc:'黔东南州黎平县', best:'四季皆宜', tips:'一定要听侗族大歌' },
+  { id:8, name:'青岩古镇', rank:8, tags:['古镇','美食','城墙'], desc:'贵州四大古镇之一，建于明洪武年间。古镇依山而建，石巷交错，卤猪脚、玫瑰糖等美食声名远扬。电影《寻枪》取景地。', img:'./images/attractions/qingyanguzhen.jpg', loc:'贵阳市花溪区', best:'四季皆宜', tips:'一定要吃卤猪脚和糕粑稀饭' },
+  { id:9, name:'马岭河峡谷', rank:9, tags:['峡谷','漂流','瀑布群'], desc:'"地球上最美丽的伤疤"。峡谷两岸飞瀑成群，有大小瀑布百余条。地缝漂流惊险刺激，是探险爱好者的理想目的地。', img:'./images/attractions/malinghe.jpg', loc:'黔西南州兴义市', best:'5-9月', tips:'漂流需备换洗衣物' },
+  { id:10, name:'织金洞', rank:10, tags:['溶洞','喀斯特','地下宫殿'], desc:'"中国最美溶洞"、"世界溶洞之王"。洞内钟乳石、石笋、石幔千姿百态，洞道纵横交错，景观壮丽，被誉为"地下的紫禁城"。', img:'./images/attractions/zhijindong.jpg', loc:'毕节市织金县', best:'四季皆宜', tips:'洞内恒温，春秋装即可' },
+];
+// ===== 2. 美食数据 =====
+const foods = [
+  { name:'酸汤鱼', desc:'贵州代表名菜，用番茄、糟辣椒发酵而成的酸汤煮鲜鱼，酸辣鲜香，开胃爽口。凯里酸汤鱼最负盛名。', img:'./images/delicacy/suantangyu.jpg', tag:'黔菜之首' },
+  { name:'丝娃娃', desc:'薄如蝉翼的米皮包裹豆芽、萝卜丝、折耳根等十余种配菜，蘸特制酸汤食用，清爽可口。贵阳街头必吃小吃。', img:'./images/delicacy/siwawa.jpg', tag:'街头名吃' },
+  { name:'肠旺面', desc:'贵州最著名的面食之一，以猪肠、血旺、脆臊、红油为浇头，面条劲道、汤色红亮、辣而不燥。贵阳人的早餐标配。', img:'./images/delicacy/changwangmian.jpg', tag:'早餐之王' },
+  { name:'糯米饭', desc:'贵州特色糯食，蒸熟的糯米搭配脆臊、花生、折耳根、辣椒，捏成饭团边走边吃。街头巷尾的温暖味道。', img:'./images/delicacy/nuomifan.jpg', tag:'地道小吃' },
+  { name:'烙锅', desc:'贵州版铁板烧，一口平底锅烙制各种食材——五花肉、豆腐、土豆、蔬菜，蘸辣椒面食用。烟火气十足的美食体验。', img:'./images/delicacy/luoguo.jpg', tag:'深夜美食' },
+  { name:'豆腐圆子', desc:'将豆腐捣碎加香料捏成圆子油炸，外酥里嫩，蘸折耳根辣椒水食用。贵阳名小吃，"豆腐圆子"已列入非遗。', img:'./images/delicacy/doufuyuanzi.jpg', tag:'非遗美食' },
+];
+// ===== 3. 民族文化数据 =====
+const cultures = [
+  { name:'苗族银饰', desc:'苗族银饰锻造技艺是国家非物质文化遗产，银冠、银项圈、银锁等工艺精湛，苗族姑娘盛装时佩戴的银饰可达十余斤。', img:'./images/culture/miaozuyinshi.jpg' },
+  { name:'侗族鼓楼', desc:'侗族村寨的标志性建筑，不用一钉一铆全榫卯结构。肇兴侗寨五大鼓楼分别代表仁、义、礼、智、信，是侗族文化的活化石。', img:'./images/culture/dongzugulou.jpg' },
+  { name:'布依族村寨', desc:'布依族依山傍水而居，石板房、蜡染、六月六歌节是其文化特色。布依族语言属壮侗语族，传统纺织技艺精湛。', img:'./images/culture/buyizucunzhai.jpg' },
+];
+// ===== 4. 评价数据 =====
+const reviews = [
+  { name:'李明', from:'北京', avatar:'L', stars:5, text:'黄果树瀑布太震撼了！水雾扑面而来的时候，整个人都被大自然的力量震撼到说不出话。千户苗寨的夜景更是美到不真实，像天上的星星落到了人间。' },
+  { name:'张芳', from:'上海', avatar:'Z', stars:5, text:'梵净山的云海日出让我终身难忘！虽然爬山很累，但当看到云海翻涌、阳光洒在金顶的那一刻，所有的疲惫都值得了。贵州，我会再来的！' },
+  { name:'王涛', from:'广州', avatar:'W', stars:5, text:'酸汤鱼、丝娃娃、肠旺面……贵州的美食太对我胃口了！又酸又辣超过瘾。荔波小七孔的水绿得像翡翠，随便一拍都是桌面壁纸。' },
+  { name:'刘雨', from:'深圳', avatar:'L', stars:4, text:'镇远古镇的慢生活太舒服了，走在青石板路上，看着舞阳河边的灯笼倒影，仿佛穿越回了古代。织金洞的钟乳石奇观让我惊叹大自然的鬼斧神工。' },
+  { name:'陈浩', from:'成都', avatar:'C', stars:5, text:'肇兴侗寨的侗族大歌让我感动到起鸡皮疙瘩，没有指挥、没有伴奏，多声部合唱浑然天成。苗族的银饰工艺更是精美绝伦，贵州的民族文化太丰富了！' },
+];
+// ===== 5. DOM渲染 =====
+function renderScenicSpots() {
+  const grid = document.getElementById('scenicGrid');
+  grid.innerHTML = scenicSpots.map(spot => `
+    <div class="scenic-card reveal" onclick="openModal(${spot.id})" style="animation-delay:${spot.id * 0.05}s">
+      <div class="scenic-badge">#${spot.rank}</div>
+      <img src="${spot.img}" alt="${spot.name}" loading="lazy" class="img-fade-in" onload="this.classList.add('loaded')">
+      <div class="scenic-card-body">
+        <h3 class="text-lg font-bold mb-2" style="color:#1b4965;">${spot.name}</h3>
+        <p class="text-xs text-gray-500 mb-3"><i class="fas fa-map-marker-alt text-qian-red-light mr-1"></i>${spot.loc}</p>
+        <div class="flex flex-wrap">${spot.tags.map(t => `<span class="scenic-tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+function renderFoods() {
+  const grid = document.getElementById('foodGrid');
+  grid.innerHTML = foods.map(f => `
+    <div class="food-card reveal">
+      <div class="relative">
+        <img src="${f.img}" alt="${f.name}" loading="lazy" class="img-fade-in" onload="this.classList.add('loaded')">
+        <span class="absolute top-3 right-3 glass-dark text-white text-xs px-3 py-1 rounded-full">${f.tag}</span>
+      </div>
+      <div class="p-5">
+        <h4 class="text-lg font-bold mb-2" style="color:#c1121f;">${f.name}</h4>
+        <p class="text-sm text-gray-500 leading-relaxed">${f.desc}</p>
+      </div>
+    </div>`).join('');
+}
+function renderCulture() {
+  const grid = document.getElementById('cultureGrid');
+  grid.innerHTML = cultures.map(c => `
+    <div class="culture-card reveal">
+      <img src="${c.img}" alt="${c.name}" loading="lazy" class="img-fade-in" onload="this.classList.add('loaded')">
+      <div class="culture-overlay">
+        <h4 class="text-2xl font-bold mb-2">${c.name}</h4>
+        <p class="text-sm text-white/80 leading-relaxed">${c.desc}</p>
+      </div>
+    </div>`).join('');
+}
+// 视频播放交互
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('cultureVideo');
+  const playBtn = document.getElementById('videoPlayBtn');
+  if (video && playBtn) {
+    video.addEventListener('play', function() { playBtn.style.display = 'none'; });
+    video.addEventListener('pause', function() { playBtn.style.display = 'flex'; });
+    video.addEventListener('ended', function() { playBtn.style.display = 'flex'; });
+  }
+});
+
+function renderReviews() {
+  const track = document.getElementById('reviewTrack');
+  track.innerHTML = reviews.map(r => `
+    <div class="review-slide">
+      <div class="review-card">
+        <div class="review-stars mb-4">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+        <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6 italic">"${r.text}"</p>
+        <div class="flex items-center justify-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">${r.avatar}</div>
+          <div class="text-left"><p class="text-white font-medium text-sm">${r.name}</p><p class="text-white/50 text-xs">来自 ${r.from}</p></div>
+        </div>
+      </div>
+    </div>`).join('');
+  const dotsContainer = document.getElementById('reviewDots');
+  dotsContainer.innerHTML = reviews.map((_, i) => `<span class="review-dot ${i===0?'active':''}" data-index="${i}"></span>`).join('');
+}
+// ===== 6. 弹窗系统 =====
+function openModal(id) {
+  const spot = scenicSpots.find(s => s.id === id);
+  if (!spot) return;
+  document.getElementById('modalBody').innerHTML = `
+    <img src="${spot.img}" alt="${spot.name}" loading="lazy">
+    <div class="modal-body">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-2xl font-bold" style="color:#1b4965;">${spot.name}</h3>
+        <span class="bg-qian-red text-white text-xs px-3 py-1 rounded-full font-bold">#${spot.rank}</span>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-4">${spot.tags.map(t => `<span class="scenic-tag text-sm">${t}</span>`).join('')}</div>
+      <p class="text-gray-600 leading-relaxed mb-6">${spot.desc}</p>
+      <div class="grid grid-cols-2 gap-4 p-4 rounded-xl bg-gray-50">
+        <div><i class="fas fa-map-marker-alt text-qian-red-light mr-2"></i><span class="text-sm text-gray-600">${spot.loc}</span></div>
+        <div><i class="fas fa-calendar-alt text-qian-green-light mr-2"></i><span class="text-sm text-gray-600">${spot.best}</span></div>
+        <div class="col-span-2"><i class="fas fa-lightbulb text-qian-gold mr-2"></i><span class="text-sm text-gray-600">${spot.tips}</span></div>
+      </div>
+    </div>`;
+  document.getElementById('scenicModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('scenicModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('scenicModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+// Dropdown toggle (supports both hover and click)
+(function() {
+  var toggle = document.getElementById('dropdownToggle');
+  var dropdown = toggle && toggle.closest('.dropdown');
+  if (toggle && dropdown) {
+    // Click to toggle (works on touch devices and after bfcache restore)
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var menu = dropdown.querySelector('.dropdown-menu');
+      if (menu) {
+        // Close all other dropdowns first
+        document.querySelectorAll('.dropdown-menu.dropdown-open').forEach(function(m) {
+          if (m !== menu) m.classList.remove('dropdown-open');
+        });
+        menu.classList.toggle('dropdown-open');
+      }
+    });
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        var menu = dropdown.querySelector('.dropdown-menu');
+        if (menu) menu.classList.remove('dropdown-open');
+      }
+    });
+    // Re-check on page show (bfcache restore)
+    window.addEventListener('pageshow', function() {
+      var menu = dropdown.querySelector('.dropdown-menu');
+      if (menu) menu.classList.remove('dropdown-open');
+    });
+  }
+})();
+// ===== 7. Banner轮播 =====
+let currentSlide = 0;
+const slides = document.querySelectorAll('.banner-slide');
+const dots = document.querySelectorAll('.carousel-dot');
+let autoSlideInterval;
+function goToSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+  currentSlide = index;
+}
+function nextSlide() { goToSlide(currentSlide + 1); }
+function prevSlide() { goToSlide(currentSlide - 1); }
+function startAutoSlide() { stopAutoSlide(); autoSlideInterval = setInterval(nextSlide, 5000); }
+function stopAutoSlide() { clearInterval(autoSlideInterval); }
+document.querySelector('.carousel-next').addEventListener('click', function() { nextSlide(); startAutoSlide(); });
+document.querySelector('.carousel-prev').addEventListener('click', function() { prevSlide(); startAutoSlide(); });
+dots.forEach(dot => { dot.addEventListener('click', function() { goToSlide(parseInt(this.dataset.slide)); startAutoSlide(); }); });
+// Banner视差
+window.addEventListener('scroll', function() {
+  const banner = document.getElementById('banner');
+  if (!banner) return;
+  const rect = banner.getBoundingClientRect();
+  const offset = rect.top * 0.3;
+  slides.forEach(s => { s.style.transform = 'translateY(' + offset + 'px)'; });
+});
+// ===== 8. 评价轮播 =====
+let reviewIndex = 0;
+const reviewTrack = document.getElementById('reviewTrack');
+let autoReviewInterval;
+function goToReview(index) {
+  const total = reviews.length;
+  if (index < 0) index = total - 1;
+  if (index >= total) index = 0;
+  reviewTrack.style.transform = 'translateX(-' + (index * 100) + '%)';
+  document.querySelectorAll('.review-dot').forEach((d, i) => { d.classList.toggle('active', i === index); });
+  reviewIndex = index;
+}
+function nextReview() { goToReview(reviewIndex + 1); }
+function prevReview() { goToReview(reviewIndex - 1); }
+function startReviewAuto() { stopReviewAuto(); autoReviewInterval = setInterval(nextReview, 4000); }
+function stopReviewAuto() { clearInterval(autoReviewInterval); }
+document.querySelector('.review-next')?.addEventListener('click', function() { nextReview(); startReviewAuto(); });
+document.querySelector('.review-prev')?.addEventListener('click', function() { prevReview(); startReviewAuto(); });
+document.getElementById('reviewDots')?.addEventListener('click', function(e) {
+  if (e.target.classList.contains('review-dot')) { goToReview(parseInt(e.target.dataset.index)); startReviewAuto(); }
+});
+// 触摸滑动
+let touchStartX = 0, touchEndX = 0;
+const carouselEl = document.getElementById('reviewCarousel');
+carouselEl.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; stopReviewAuto(); }, {passive:true});
+carouselEl.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) { diff > 0 ? nextReview() : prevReview(); }
+  startReviewAuto();
+}, {passive:true});
+// ===== 9. 数字滚动 =====
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  counters.forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const step = Math.max(1, Math.floor(target / 60));
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      counter.textContent = current.toLocaleString();
+    }, 30);
+  });
+}
+// ===== 10. 滚动监听 =====
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', function() {
+  const scrollY = window.scrollY;
+  navbar.classList.toggle('nav-scrolled', scrollY > 50);
+  document.getElementById('backToTop').classList.toggle('visible', scrollY > 500);
+  const sections = ['banner','stats','scenic','food','routes','culture','reviews'];
+  let activeId = 'banner';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop - 120 <= scrollY) activeId = id;
+  });
+  navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + activeId); });
+});
+// ===== 11. 滚动揭示 =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+// ===== 12. 移动端菜单 =====
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+// ===== 13. 图片加载 =====
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  if (img.complete) { img.classList.add('loaded'); }
+  else {
+    img.addEventListener('load', function() { this.classList.add('loaded'); });
+    img.addEventListener('error', function() { this.style.display = 'none'; });
+  }
+});
+// ===== 14. 初始化 =====
+function init() {
+  renderScenicSpots();
+  renderFoods();
+  renderCulture();
+  renderReviews();
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  const statsEl = document.getElementById('stats');
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { animateCounters(); statsObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.3 });
+  if (statsEl) statsObserver.observe(statsEl);
+  startAutoSlide();
+  startReviewAuto();
+  console.log('✅ 贵州旅游官网已加载完成');
+  console.log('📸 图片来源：Unsplash');
+}
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
+else { init(); }
+</script>
+</body>
+</html>
